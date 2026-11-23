@@ -78,6 +78,7 @@ import { UsageLimitNotice, useLimitNotice, useUsageAlerts } from "../../componen
 import { useStorage } from "../../context/storage"
 import { Composer } from "./composer"
 import { busyCounts, busyTab } from "./composer/tabs"
+import { SessionMascot, SessionMascotBadge, SessionMascotPresence } from "./mascot"
 import { filetype } from "../../util/filetype"
 import parsers from "../../parsers-config"
 import { errorMessage } from "../../util/error"
@@ -1521,6 +1522,7 @@ export function Session(props: {
         pendingDelivery: (inboxID) => pendingDeliveries().get(inboxID),
       }}
     >
+      <SessionMascot sessionID={route.sessionID}>
       <box flexDirection="row" flexGrow={1} minHeight={0}>
         <box
           flexGrow={1}
@@ -1607,6 +1609,7 @@ export function Session(props: {
                 <QueuedPromptDock prompts={queuedPrompts()} onOpen={openQueuedPrompts} />
               </Show>
               <Slot path="session.composer.top" input={{ sessionID: route.sessionID }} />
+              <SessionMascotBadge />
               <Composer
                 sessionID={route.sessionID}
                 open={composerVisible()}
@@ -1674,7 +1677,9 @@ export function Session(props: {
             </box>
           </Show>
         </box>
+        <SessionMascotPresence />
       </box>
+      </SessionMascot>
     </context.Provider>
   )
 }

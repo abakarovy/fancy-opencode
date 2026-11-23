@@ -61,6 +61,7 @@
         "@kobalte/core": "catalog:",
         "@opencode/client": "workspace:*",
         "@opencode/gui-plugins": "workspace:*",
+        "@opencode/mascot": "workspace:*",
         "@opencode/plugin": "workspace:*",
         "@opencode/schema": "workspace:*",
         "@opencode/session-ui": "workspace:*",
@@ -386,6 +387,7 @@
         "@opencode/app": "workspace:*",
         "@opencode/client": "workspace:*",
         "@opencode/gui-plugins": "workspace:*",
+        "@opencode/mascot": "workspace:*",
         "@opencode/plugin": "workspace:*",
         "@opencode/schema": "workspace:*",
         "@opencode/ui": "workspace:*",
@@ -506,6 +508,16 @@
         "@tsconfig/bun": "catalog:",
         "@types/bun": "catalog:",
         "@typescript/native": "catalog:",
+      },
+    },
+    "packages/mascot": {
+      "name": "@opencode/mascot",
+      "version": "2.3.0",
+      "devDependencies": {
+        "@tsconfig/bun": "catalog:",
+        "@types/bun": "catalog:",
+        "@typescript/native": "catalog:",
+        "typescript": "catalog:",
       },
     },
     "packages/merman": {
@@ -797,6 +809,7 @@
         "@opencode/client": "workspace:*",
         "@opencode/core": "workspace:*",
         "@opencode/latex": "workspace:*",
+        "@opencode/mascot": "workspace:*",
         "@opencode/merman": "workspace:*",
         "@opencode/plugin": "workspace:*",
         "@opencode/schema": "workspace:*",
@@ -1876,6 +1889,8 @@
     "@opencode/latex": ["@opencode/latex@workspace:packages/latex"],
 
     "@opencode/legacy": ["@opencode/legacy@workspace:services/legacy"],
+
+    "@opencode/mascot": ["@opencode/mascot@workspace:packages/mascot"],
 
     "@opencode/merman": ["@opencode/merman@workspace:packages/merman"],
 

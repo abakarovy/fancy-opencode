@@ -158,6 +158,7 @@ export function NewSessionWordmark(props: {
   /** Dropping the lodger on the composer starts Brick Breaker. */
   play?: boolean
   sound?: () => boolean
+  align?: "start"
 }) {
   // Read once: the lodger stays mounted after handing over to the pin board, and can be dragged back into the hole.
   const lodger = selectWordmarkLodger(props.state())
@@ -167,7 +168,8 @@ export function NewSessionWordmark(props: {
     <div
       data-component="new-session-wordmark"
       aria-hidden="true"
-      class="pointer-events-none mx-auto w-full max-w-[720px] text-v2-background-bg-inverse"
+      class="pointer-events-none w-full max-w-[720px] text-v2-background-bg-inverse"
+      classList={{ "mx-auto": props.align !== "start", "mx-0": props.align === "start" }}
     >
       <div
         ref={(el) => {
@@ -175,7 +177,8 @@ export function NewSessionWordmark(props: {
           props.ref(el)
         }}
         data-slot="wordmark-box"
-        class="relative mx-auto aspect-[234/42] w-4/5"
+        class="relative aspect-[234/42] w-4/5"
+        classList={{ "mx-auto": props.align !== "start", "mx-0": props.align === "start" }}
       >
         <Show when={lodger}>
           <WordmarkLodger

@@ -1,3 +1,4 @@
+import type { MascotEdit, RemoteMascot } from "@opencode/mascot"
 import { createSimpleContext } from "@opencode/ui/context"
 import type { AsyncStorage, SyncStorage } from "@solid-primitives/storage"
 import type { Accessor } from "solid-js"
@@ -15,6 +16,8 @@ type OpenAttachmentPickerOptions = {
   accept?: string[]
   extensions?: string[]
   defaultPath?: string
+  /** Total bytes the selection may read. Omit for the chat attachment limit. */
+  maxBytes?: number
 }
 
 type OpenFilePathPickerOptions = { title?: string; multiple?: boolean; extensions?: string[] }
@@ -163,6 +166,12 @@ type PlatformBase = {
 
   /** GUI plugin bridge to the main-process plugin host (desktop only). */
   plugins?: Bridge
+
+  /** Read the shared mascot pack from the user's config directory (desktop only). */
+  loadMascot?(): Promise<RemoteMascot>
+
+  /** Change the desktop app's mascot pack and return the result (desktop only). */
+  editMascot?(edit: MascotEdit): Promise<RemoteMascot>
 }
 
 export type Platform = PlatformBase &

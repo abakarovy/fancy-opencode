@@ -59,6 +59,8 @@ export function createDesktopPlatform(api: ElectronAPI, windowState: DesktopWind
       return api.checkAppExists(appName)
     },
     plugins: createPluginBridge(),
+    loadMascot: () => api.loadMascot(),
+    editMascot: (edit) => api.editMascot(edit),
   }
 }
 

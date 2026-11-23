@@ -44,6 +44,7 @@ import { createTimelineQuote, TimelineQuote } from "./timeline/quote"
 import { createTimelineQuoteHighlight } from "./timeline/quote-highlight"
 import { ActiveSessionComposerRegion, createActiveSessionRegion } from "./composer/region"
 import { SessionIdentityHeader, SessionLocation } from "./session-identity-header"
+import { SessionMascot } from "./mascot"
 import { SessionHeaderDrag, windowDragEnabled } from "./header/drag-area"
 import { usePlatform } from "@/runtime/platform/platform"
 import { useServer } from "@/runtime/server/current"
@@ -456,6 +457,10 @@ function SessionScreenContent(props: {
         </Switch>
       </div>
 
+      {/* Keyed by session so each conversation gets a fresh mascot that fades in, instead of gliding over from the previous one. */}
+      <Show when={session.identity.sessionID()} keyed>
+        {(_id) => <SessionMascot session={session} />}
+      </Show>
       {/* The composer region overflows this zero-height row upward, over a timeline that scrolls on underneath it. It
           stays shallower than the timeline's observed elements, so their resizes from its inset arrive in the same
           ResizeObserver pass. */}

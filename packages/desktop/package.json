@@ -34,6 +34,7 @@
     "@hona/strobe": "catalog:",
     "@lydell/node-pty": "catalog:",
     "@opencode/app": "workspace:*",
+    "@opencode/mascot": "workspace:*",
     "@opencode/gui-plugins": "workspace:*",
     "@opencode/plugin": "workspace:*",
     "@opencode/client": "workspace:*",

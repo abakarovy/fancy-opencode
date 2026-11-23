@@ -39,6 +39,7 @@ export function createDesktopFiles(api: DesktopFileAPI, os: DesktopOS) {
       title: options?.title,
       defaultPath: options?.defaultPath,
       extensions: options?.extensions,
+      maxBytes: options?.maxBytes,
     })
 
     if (!result) return

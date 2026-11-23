@@ -6,6 +6,7 @@ import { ExternalLink } from "@/runtime/platform/external-link"
 import { SettingsList } from "@/settings/list"
 import { SettingsRow } from "@/settings/row"
 import { createAppearanceSettingsController, type AppearanceSettingsController } from "@/settings/general/controllers"
+import { SettingsMascot } from "@/settings/appearance/mascot-settings"
 import "@/settings/settings.css"
 
 const schemeOptions: ("system" | "light" | "dark")[] = ["system", "light", "dark"]
@@ -170,6 +171,8 @@ export const SettingsAppearance: Component = () => {
             </SettingsRow>
           </SettingsList>
         </div>
+
+        <SettingsMascot />
       </div>
     </>
   )

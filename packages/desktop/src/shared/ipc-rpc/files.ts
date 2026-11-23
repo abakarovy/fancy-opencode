@@ -15,6 +15,7 @@ const FilePickerOptions = Schema.Struct({
   title: OptionalString,
   defaultPath: OptionalString,
   extensions: Schema.optional(Schema.Array(Schema.String)),
+  maxBytes: Schema.optional(Schema.Number),
 })
 
 const SavePickerOptions = Schema.Struct({ title: OptionalString, defaultPath: OptionalString })

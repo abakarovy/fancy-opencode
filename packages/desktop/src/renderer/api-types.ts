@@ -1,3 +1,4 @@
+import type { MascotEdit, RemoteMascot } from "@opencode/mascot"
 import type { DesktopMenuAction, DesktopZoomLevel } from "@opencode/app/desktop-menu"
 import type { DesktopNativeBundle } from "@opencode/app/i18n/desktop-native"
 import type { StorageSnapshot } from "../shared/ipc-transport"
@@ -88,4 +89,6 @@ export type ElectronAPI = {
   setSpellcheckEnabled(enabled: boolean): Promise<void>
   recordFatalRendererError(error: FatalRendererError): Promise<void>
   setNativeTranslations(bundle: DesktopNativeBundle): Promise<void>
+  loadMascot(): Promise<RemoteMascot>
+  editMascot(edit: MascotEdit): Promise<RemoteMascot>
 }

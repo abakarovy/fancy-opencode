@@ -43,6 +43,8 @@ export type DirectoryPickerOptions = {
 
 export type FilePickerOptions = DirectoryPickerOptions & {
   extensions?: string[]
+  /** Total bytes the selection may read. Defaults to the attachment limit. */
+  maxBytes?: number
 }
 
 export type PickedFiles = {

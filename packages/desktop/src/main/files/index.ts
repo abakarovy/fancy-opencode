@@ -114,8 +114,8 @@ function make(
           { concurrency: "unbounded" },
         )
 
-        assertAttachmentBudget(files)
-        const token = pickedFiles.grant(picker, result.filePaths)
+        assertAttachmentBudget(files, options?.maxBytes)
+        const token = pickedFiles.grant(picker, result.filePaths, options?.maxBytes)
 
         return token === undefined ? null : { token, files }
       }).pipe(Effect.ensuring(Effect.sync(() => pickedFiles.close(picker))))

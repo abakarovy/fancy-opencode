@@ -49,13 +49,13 @@ export function createPickedFileAuthorizations(
       return reply?.type === "picker-opened" ? reply.picker : undefined
     },
     /** Grants the dialog's files; undefined when its renderer reloaded or closed while the dialog was open. */
-    grant(picker: number, paths: readonly string[]) {
+    grant(picker: number, paths: readonly string[], budget = MAX_ATTACHMENT_BYTES) {
       const reply = dispatch({
         type: "selection.granted",
         picker,
         token: randomUUID(),
         paths,
-        budget: MAX_ATTACHMENT_BYTES,
+        budget,
       })
 
       return reply?.type === "granted" ? reply.token : undefined
@@ -105,11 +105,11 @@ function rejection(reply: PickedFileCommand | undefined) {
   return new Error(nativeT("desktop.picker.error.notSelected"))
 }
 
-export function assertAttachmentBudget(files: { size: number }[]) {
+export function assertAttachmentBudget(files: { size: number }[], budget = MAX_ATTACHMENT_BYTES) {
   const total = files.reduce((sum, file) => sum + file.size, 0)
 
-  if (total <= MAX_ATTACHMENT_BYTES) return
-  throw new Error(nativeT("desktop.picker.error.sizeLimit", { limit: MAX_ATTACHMENT_BYTES / 1024 / 1024 }))
+  if (total <= budget) return
+  throw new Error(nativeT("desktop.picker.error.sizeLimit", { limit: budget / 1024 / 1024 }))
 }
 
 export function readAttachment(filePath: string, maxBytes = MAX_ATTACHMENT_BYTES) {

@@ -52,6 +52,7 @@
     "@opencode/client": "workspace:*",
     "@opencode/core": "workspace:*",
     "@opencode/latex": "workspace:*",
+    "@opencode/mascot": "workspace:*",
     "@opencode/merman": "workspace:*",
     "@opencode/plugin": "workspace:*",
     "@opencode/schema": "workspace:*",

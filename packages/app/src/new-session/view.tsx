@@ -41,6 +41,7 @@ import { BaseBranchPicker } from "./workspace/selector"
 import { NewSessionBrickBreaker } from "./brick-breaker"
 import { NewSessionPinBoard } from "./pin-board"
 import { NewSessionWordmark } from "./wordmark"
+import tesseract from "@/assets/tesseract.gif"
 import {
   createWordmarkState,
   selectBrickBreaker,
@@ -100,16 +101,28 @@ export function NewSessionView(props: {
           active={props.composer.state.drag === "active"}
           input={props.composer.model.selection.current()?.capabilities.input}
         />
-        <div class="absolute inset-x-0 top-[25.375%] flex justify-center px-6">
-          <div class={NEW_SESSION_CONTENT_WIDTH}>
-            <NewSessionWordmark
-              ref={setLogo}
-              state={wordmark}
-              onEvent={dispatchWordmark}
-              play
-              sound={settings.sounds.interfaceEnabled}
+        <div class="absolute inset-x-0 top-[22%] px-8">
+          <div class={`mx-auto flex items-center gap-3 ${NEW_SESSION_CONTENT_WIDTH}`}>
+            <div class="w-[min(480px,42vw)]">
+              <NewSessionWordmark
+                ref={setLogo}
+                state={wordmark}
+                onEvent={dispatchWordmark}
+                play
+                align="start"
+                sound={settings.sounds.interfaceEnabled}
+              />
+            </div>
+            <img
+              alt=""
+              aria-hidden="true"
+              src={tesseract}
+              data-mascot="tesseract"
+              class="pointer-events-none h-auto w-[128px] shrink-0 select-none"
             />
-            <div class="mt-8 flex flex-col gap-3">
+          </div>
+          <div class={`mx-auto mt-10 ${NEW_SESSION_CONTENT_WIDTH}`}>
+            <div class="flex flex-col gap-3">
               <div data-slot="new-session-composer" class="flex flex-col gap-1">
                 <div class="relative z-10">
                   <Composer model={props.composer} />
